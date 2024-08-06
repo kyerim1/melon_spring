@@ -7,14 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1> 나는 login</h1>
-	<form method="post" action="/login">
-		<input type="text" name="userId"> <br>
-		<input type="password" name="userPw"> <br>
-		<button>로그인</button>
-	</form>
+		<a href="/test">페이지 이동</a>
 </body>
 </html>
-
-
-
