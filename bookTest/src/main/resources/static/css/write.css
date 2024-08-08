@@ -12,7 +12,9 @@
 #enrollCount{padding:15px;}
 #formWrap{
 	width:100%;
-	padding:10px;
+	padding:20px;
+	border:1px solid #ccc;
+	border-radius:10px;
 }
 
 .inputField{
@@ -22,12 +24,21 @@
 	padding:7px 0 ;
 }
 .inputField input{
-	width:300px;
+	width:70%;
 	height:35px;
 	padding:10px;
 	border-radius: 10px;
 }
-
+.radioField{
+	width:70%;
+	display:flex;
+	align-items:center;
+	
+}
+.inputField input[type=radio]{
+	width:17px; height:17px;
+	margin-left:15px;
+}
 #bt{
 	width:80%;	
 	border:0;
