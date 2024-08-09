@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,13 +20,17 @@
 		</div>
 		<div id="bookListWrap">
 			<ul id="bookList">
-			
+			<c:forEach var="row" items="${list }">
 				<li class="blist">
-					<span class="itemName"></span>
-					<span class="price"></span>
-					<span class="decaffein"></span>
+					<span class="itemName">
+						<a href="/coffe/view?id=${row.coffeId }">${row.itemName }</a>
+					</span>
+					<span class="price">${row.price }</span>
+					<span class="decaffein">
+						${row.decaffein ? '디카페인': '' }
+					</span>
 				</li>
-				
+			</c:forEach>	
 			</ul>
 		</div>
 	</div>

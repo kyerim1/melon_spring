@@ -47,7 +47,18 @@ public class BookController {
 		return "index";
 	}
 	
-	
+	@GetMapping("/book/view")
+	public ModelAndView view( @RequestParam(value="id",
+			required=false, defaultValue="0") int id ) {
+		
+		BookDto data = bookService.getBook(id);
+		
+		if(data == null) data = new BookDto();  // getBook메서드의 반환값으로 null 저장 된다면
+		                                   // view.jsp에서 변수의 값이 null이기때문에
+		                                   //  get 메서드 호출이 안되어 오류가발생한다.
+		                         //  오류가 발생 되지 않게 하기위해 빈 값이 있는 객체 할당
+		return new ModelAndView("book/view").addObject("book", data);
+	}
 }
 
 
