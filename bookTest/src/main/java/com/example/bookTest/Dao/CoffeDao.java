@@ -20,6 +20,15 @@ public class CoffeDao {
 		this.db= jdbc;
 	}
 	
+	// 커피 삭제
+	public void	delete(int bid) {
+		String sql="delete from coffe where coffe_id=?";
+		
+		db.update(sql, bid);
+	}
+	
+	
+	
 	// 커피메뉴상세 
 	public CoffeDto findById(int cid) {
 		String sql="select * from coffe where coffe_id=?";

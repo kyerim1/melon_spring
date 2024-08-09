@@ -15,6 +15,11 @@ public class CoffeService {
 	private CoffeDao coffeDao;
 	
 	
+	public void remove(int id) {
+		coffeDao.delete(id);
+	}
+	
+	
 	public CoffeDto getMenu(int id) {
 		return coffeDao.findById(id);
 	}

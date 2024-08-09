@@ -11,9 +11,17 @@
 <link rel="stylesheet" href="/css/info.css">
 <script src="/javascript/info.js"></script>
 
+<script>
+	inputType=["text","number","radio"];
+	inputName=["itemName","price","decaffein"];
+</script>
+
 </head>
 <body>
 
+	<form id="fm" method="get" action="/coffee/delete">
+		<input type="hidden" name="id" value="${menu.coffeId }">
+		
 	<div id="wrap">
 		<a href="/">HOME</a>
 		<table id="viewBox">
@@ -39,6 +47,7 @@
 			
 		</table>
 	</div>
+	</form>
 
 </body>
 </html>

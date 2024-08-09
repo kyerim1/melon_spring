@@ -59,6 +59,27 @@ public class BookController {
 		                         //  오류가 발생 되지 않게 하기위해 빈 값이 있는 객체 할당
 		return new ModelAndView("book/view").addObject("book", data);
 	}
+	
+	
+	@GetMapping("/book/delete")
+	public String bookRemove( @RequestParam("id") int bid) {
+		
+		bookService.remove(bid);
+		return "redirect:/";
+		
+		//return "<script> alert('삭제되었습니다.'); location.href='/';</script>";
+	}
+	
+	
+	@GetMapping("/book/update")
+	public String bookUpdate( @ModelAttribute BookDto bookDto, 
+			@RequestParam("id") int id) {
+		bookDto.setBookId(id);
+		bookService.update(bookDto);
+		
+		return "redirect:/book/view?id="+id; //수정 도서의 상세페이지 이동
+	}
+	
 }
 
 

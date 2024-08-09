@@ -51,6 +51,13 @@ public class CoffeControl {
 	}
 	
 	
+	@GetMapping("/coffee/delete")
+	public String remove( @RequestParam("id") int id) {
+		coffeService.remove(id);
+		return "redirect:/coffe";		
+	}
+	
+	
 }
 
 

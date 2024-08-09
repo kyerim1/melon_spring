@@ -18,6 +18,13 @@ public class BookService {
 		this.bookDao=bookDAO;
 	}
 	
+	//도서삭제 
+	public void remove(int bid) {
+		bookDao.delete(bid);
+	}
+	
+	
+	
 	// 도서 상세 정보 가져오기 - id 파라미터 값 DAO 넘겨서 조회 하고 결과 받아서 control에 넘기기
 	public BookDto getBook(int id) {
 		
@@ -45,6 +52,11 @@ public class BookService {
 			// 도서 코드가 이미 데이터베이스에 저장 되어있는지 확인 후 저장
 			bookDao.insert(bookDto); // DAO 클래스의 insert메서드 실행해서 저장
 		}
+	}
+
+	public void update(BookDto bookDto) {
+		
+		bookDao.update(bookDto);
 	}
 	
 }
