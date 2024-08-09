@@ -15,6 +15,10 @@ public class CoffeService {
 	private CoffeDao coffeDao;
 	
 	
+	public CoffeDto getMenu(int id) {
+		return coffeDao.findById(id);
+	}
+	
 	public List<CoffeDto> selectAll(){
 		
 		return coffeDao.select();

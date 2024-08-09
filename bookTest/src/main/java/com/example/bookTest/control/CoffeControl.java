@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.bookTest.Dto.BookDto;
@@ -40,6 +41,15 @@ public class CoffeControl {
 		coffeService.menuInsert(coffeDto);		
 		return "redirect:/coffe";
 	}
+	
+	
+	@GetMapping("/coffee/view")
+	public ModelAndView view(@RequestParam("id") int id) {
+		
+		CoffeDto dto = coffeService.getMenu(id);
+		return new ModelAndView("coffe/view").addObject("menu",dto);
+	}
+	
 	
 }
 

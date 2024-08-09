@@ -20,6 +20,16 @@ public class CoffeDao {
 		this.db= jdbc;
 	}
 	
+	// 커피메뉴상세 
+	public CoffeDto findById(int cid) {
+		String sql="select * from coffe where coffe_id=?";
+		
+		CoffeDto dto = db.queryForObject(sql, new CoffeDtoRowMapper(), cid);
+		
+		return dto;
+	}
+	
+	
 	public List<CoffeDto> select(){
 		String sql="select * from coffe";
 		
