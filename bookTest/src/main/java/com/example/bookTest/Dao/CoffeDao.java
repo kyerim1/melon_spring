@@ -69,6 +69,16 @@ public class CoffeDao {
 		}
 		
 	}
+
+	public void update(CoffeDto coffeDto) {
+		
+		String sql = "update coffe set item_name=? , price=?, decaffein=? "+
+				" where coffe_id=?";
+		
+		db.update(sql , coffeDto.getItemName(), coffeDto.getPrice(), 
+				coffeDto.isDecaffein() , coffeDto.getCoffeId());
+		
+	}
 }
 
 

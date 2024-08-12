@@ -23,7 +23,7 @@
 		<input type="hidden" name="id" value="${menu.coffeId }">
 		
 	<div id="wrap">
-		<a href="/">HOME</a>
+		<a href="/coffe">HOME</a>
 		<table id="viewBox">
 		
 			<tr>

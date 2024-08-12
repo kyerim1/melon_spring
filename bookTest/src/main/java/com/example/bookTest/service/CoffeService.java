@@ -34,6 +34,13 @@ public class CoffeService {
 		if( coffeDto != null)
 			coffeDao.save(coffeDto);
 	}
+
+
+	public void update(CoffeDto coffeDto) {
+		
+		coffeDao.update( coffeDto );
+		
+	}
 }
 
 
