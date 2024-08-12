@@ -25,7 +25,6 @@
 	<div id="wrap">
 		<a href="/coffe">HOME</a>
 		<table id="viewBox">
-		
 			<tr>
 				<td class="fieldName">메뉴명</td>
 				<td class="value">${ menu.itemName }</td>
