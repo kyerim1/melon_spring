@@ -24,6 +24,13 @@ public class GameController {
 		model.addAttribute("gameMember" , new GameMemberDto());		
 		return "game/member/login";
 	}
+	
+	//회원 가입 양식 페이지 요청
+	@GetMapping("/signUp")
+	public String signup(Model model) {
+		
+		return "game/member/join";
+	}
 }
 
 

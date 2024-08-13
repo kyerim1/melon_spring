@@ -1,42 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{game/basic}">
+	
 <head>
-<meta charset="UTF-8">
-<title>게임 로그인</title>
-<!-- jquery CDN-->
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+	<th:block layout:fragment="css"></th:block>
+	<th:block layout:fragment="script"></th:block>
+</head>	
 
-<link rel="stylesheet" href="/css/game.css">
-<script src="/js/game.js"></script>
-
-
-</head>
-<body>
-
-	<div id="wrap">
-		<div id="header">
-			<div id="nav">
-				<ul id="menuList">
-					<li><a href="">PC게임</a></li>
-					<li><a href="/game/m">모바일</a></li>
-					<li><a href="">콘솔</a></li>
-					<li><a href="">MakeByMe</a></li>
-					<li><a href="">불만게임</a></li>
-				</ul>
-				<div id="userALogo">
-					<div class="userbox">
-						<span class="loginLink">
-							<a th:href="@{/game/login}">로그인</a>
-						</span>
-						<span class="userService">고객센터</span>
-					</div>
-					<div class="logo"></div>
-				</div>
-			</div>
-		</div>
-		
-		<div id="main">
-		
+	<div layout:fragment="main" id="main">
+	
 			<form method="post" action="/game/signIn" th:object="${gameMember}">
 				<div id="formData">
 					<div class="inputField">
@@ -56,15 +29,7 @@
 				<a href="">아이디/비밀번호 찾기</a>
 				<a href="/game/signUp">회원가입</a>
 			</div>
-			
-		
 		</div>
-		
-		<div id="footer">
-		</div>
-	</div>
-</body>
-</html>
 
 
-
+</html>	
