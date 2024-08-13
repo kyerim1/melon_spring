@@ -29,7 +29,7 @@ public class MovieController {
 	// 회원가입 페이지 요청
 	@GetMapping("/signUp")
 	public String signUp(Model model) {
-		
+		model.addAttribute("movieMember" , new MovieMember());
 		return "movie/member/join";
 	}
 	
