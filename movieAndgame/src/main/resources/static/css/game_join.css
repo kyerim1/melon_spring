@@ -27,7 +27,7 @@
 }
 #formData .inputField label{
 	position:absolute;
-	left:17px; top:14px;  font-size:19px;
+	left:17px; top:-17px;  font-size:19px;
 	color:#999;
 	transition:all 1s;
 	
@@ -48,8 +48,8 @@
 }
 #joinBt{
 	border:0;
-	background:black;
-	color:Red;
+	background:#0080c0;
+	color:white;
 	width:250px;
 	padding:10px 0;
 	font-size:23px;

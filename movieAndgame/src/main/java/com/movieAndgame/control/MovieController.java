@@ -1,8 +1,13 @@
 package com.movieAndgame.control;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.movieAndgame.Dto.MovieMember;
@@ -31,6 +36,19 @@ public class MovieController {
 	public String signUp(Model model) {
 		model.addAttribute("movieMember" , new MovieMember());
 		return "movie/member/join";
+	}
+	
+	// 회원가입 작성 후 요청
+	@PostMapping("/signUp")
+	public String signUp( @Valid MovieMember movieMember, 
+			BindingResult bindingResult , Model model) {
+		if( bindingResult.hasErrors() ) {
+			System.out.println(" 유효하지 않은값이 입력되었다.");
+		
+			return "movie/member/join";
+		}
+		
+		return "redirect:/movie/login";
 	}
 	
 }
