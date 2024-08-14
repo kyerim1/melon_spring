@@ -2,6 +2,7 @@ package com.movieAndgame.control;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,11 +11,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.movieAndgame.Dto.GameMemberDto;
+import com.movieAndgame.service.GameMemberService;
 
 @Controller
 @RequestMapping("/game")
 public class GameController {
 
+	@Autowired
+	private GameMemberService gameMemberService;
+	
 	// localhost/game/index 매핑
 	@GetMapping("/index")
 	public String home(Model model) {
@@ -42,7 +47,7 @@ public class GameController {
 		if(bindingResult.hasErrors()) {
 			return "game/member/join";
 		}
-		
+		gameMemberService.joinSave(gameMemeberDto);
 		return "redirect:/game/login";
 		
 	}

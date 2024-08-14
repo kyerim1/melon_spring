@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.movieAndgame.Dao.GameMemberDaoImpl">
+
+	<insert id="insert" parameterType="com.movieAndgame.Dto.GameMemberDto">
+		insert into game_member(email, nick_name, password) 
+			values( #{email}, #{nickName}, #{password} )
+	</insert>
+</mapper>

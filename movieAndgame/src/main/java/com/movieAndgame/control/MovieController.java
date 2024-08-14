@@ -2,6 +2,7 @@ package com.movieAndgame.control;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,11 +12,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.movieAndgame.Dto.MovieMember;
+import com.movieAndgame.service.MovieMemberService;
 
 @Controller
 @RequestMapping("/movie")
 public class MovieController {
 
+	@Autowired
+	private MovieMemberService movieMemberService;
+	
+	
 	// "/" 은  localhost/movie/index 매핑이다.
 	@GetMapping("/index")
 	public String Home(Model model) {
@@ -47,6 +53,8 @@ public class MovieController {
 		
 			return "movie/member/join";
 		}
+		
+		movieMemberService.signUpSave(movieMember);
 		
 		return "redirect:/movie/login";
 	}
