@@ -32,8 +32,10 @@ public class MovieController {
 	}
 	
 	@GetMapping("/login")
-	public String loginHome(Model model) {
+	public String loginHome(Model model,HttpServletRequest request) {
 		
+		String preUri = request.getHeader("Referer");// 로그인 이전 페이지
+		request.getSession().setAttribute("preUri", preUri);
 		model.addAttribute("member" , new MovieMember() );
 		
 		return "movie/member/login";
@@ -78,8 +80,16 @@ public class MovieController {
 			model.addAttribute("fail","a");    
 			return "movie/member/login";
 		}
+		// 로그인 성공시 로그인 화면 이전 방문 페이지 이동
+		String preUri = (String)session.getAttribute("preUri");
 		session.setAttribute("user", user);
-		
+		return "redirect:"+preUri;//"redirect:/game/index";
+	}
+	
+	
+	@GetMapping("/logout")
+	public String out(HttpSession session) {
+		session.removeAttribute("user");
 		return "redirect:/movie/index";
 	}
 	

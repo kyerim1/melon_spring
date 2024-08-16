@@ -1,5 +1,6 @@
 package com.movieAndgame.control;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -30,8 +31,10 @@ public class GameController {
 	}
 	
 	@GetMapping("/login")
-	public String login(Model model) {
+	public String login(Model model,HttpServletRequest request) {
 		
+		String preUri = request.getHeader("Referer");// 로그인 이전 페이지
+		request.getSession().setAttribute("preUri", preUri);
 		model.addAttribute("gameMemberLogin" , new GameMemberLogin());		
 		return "game/member/login";
 	}
@@ -67,8 +70,10 @@ public class GameController {
 		if(bind.hasErrors())
 			return "game/member/login";
 		
+		// 로그인 성공시 로그인 화면 이전 방문 페이지 이동
+		String preUri = (String)session.getAttribute("preUri");
 		session.setAttribute("user", user);
-		return "redirect:/game/index";
+		return "redirect:"+preUri;//"redirect:/game/index";
 	}
 }
 
