@@ -1,5 +1,6 @@
 package com.movieAndgame.control;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.movieAndgame.Dto.GameMemberDto;
+import com.movieAndgame.Dto.GameMemberLogin;
 import com.movieAndgame.service.GameMemberService;
 
 @Controller
@@ -30,7 +32,7 @@ public class GameController {
 	@GetMapping("/login")
 	public String login(Model model) {
 		
-		model.addAttribute("gameMember" , new GameMemberDto());		
+		model.addAttribute("gameMemberLogin" , new GameMemberLogin());		
 		return "game/member/login";
 	}
 	
@@ -50,6 +52,23 @@ public class GameController {
 		gameMemberService.joinSave(gameMemeberDto);
 		return "redirect:/game/login";
 		
+	}
+	
+	
+	//로그인
+	@PostMapping("/signIn")
+	public String signIn(@Valid GameMemberLogin gameMemberLogin,
+			BindingResult bind , Model model , HttpSession session) {
+		
+		GameMemberDto user = gameMemberService.login(gameMemberLogin);
+		if(user == null) {
+			bind.rejectValue("password","error.password","이메일 또는 비밀번호가 잘못 되었습니다.");
+		}
+		if(bind.hasErrors())
+			return "game/member/login";
+		
+		session.setAttribute("user", user);
+		return "redirect:/game/index";
 	}
 }
 

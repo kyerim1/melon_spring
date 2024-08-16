@@ -3,6 +3,14 @@
 
 <mapper namespace="com.movieAndgame.Dao.GameMemberDaoImpl">
 
+	<select id="login" resultType="com.movieAndgame.Dto.GameMemberDto"
+		parameterType="com.movieAndgame.Dto.GameMemberLogin">
+			select email, nick_name 
+			from game_member
+			where email=#{email} and password=#{password}	
+	</select>
+
+
 	<insert id="insert" parameterType="com.movieAndgame.Dto.GameMemberDto">
 		insert into game_member(email, nick_name, password) 
 			values( #{email}, #{nickName}, #{password} )

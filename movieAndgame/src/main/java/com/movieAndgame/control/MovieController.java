@@ -1,5 +1,7 @@
 package com.movieAndgame.control;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,10 +56,33 @@ public class MovieController {
 			return "movie/member/join";
 		}
 		
-		movieMemberService.signUpSave(movieMember);
+		boolean isDup = movieMemberService.signUpSave(movieMember);
+		if( isDup) { // 이메일이 중복이라면 회원가입 페이지로 이동시킨다.
+			bindingResult.rejectValue("email", "error.email","가입된 이메일 입니다.");
+			return "movie/member/join";	
+		}
 		
 		return "redirect:/movie/login";
 	}
+	
+	// 로그인 처리 요청
+	@PostMapping("/signIn")
+	public String signIn(  MovieMember member, HttpSession session
+			,Model model) {
+		// 로그인 처리 - 데이터베이스에 이메일과 비번이 일치하는지 확인하고
+		// 일치하면 세션 만들고 첫페이지로 이동 , 일치하지않으면 로그인 페이지로 돌려보내기
+		
+		MovieMember user = movieMemberService.login(member);
+		if(user==null) { // 로그인 실패(이메일또는 비번 잘못)
+			model.addAttribute("member",member);
+			model.addAttribute("fail","a");    
+			return "movie/member/login";
+		}
+		session.setAttribute("user", user);
+		
+		return "redirect:/movie/index";
+	}
+	
 	
 }
 
