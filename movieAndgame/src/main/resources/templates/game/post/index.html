@@ -18,6 +18,19 @@
 				
 		<div id="section_middle">
 			<table id="reviewList">
+				<tr>
+					<th>제목</th>
+					<th>게임</th>
+					<th>작성일</th>
+				</tr>
+				
+				<tr th:each="row : ${mList}">
+					<td>
+					<a th:href="'/gamePost/view'+${row.post_id}" th:text="${row.title}"></a>
+					</td>
+					<td th:text="${row.game_name}"></td>
+					<td th:text="${#temporals.format(row.write_date,'yyyy-MM-dd')}"></td>
+				</tr>
 			</table>
 		</div>		
 		

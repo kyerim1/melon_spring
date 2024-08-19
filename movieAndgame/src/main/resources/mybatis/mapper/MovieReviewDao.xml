@@ -4,6 +4,13 @@
 
 <mapper namespace="com.movieAndgame.Dao.MovieReviewDaoImpl">
 
+<!-- 리뷰(후기) 전체 가져오기 : 목록 출력을위해  -->
+	<select id="findAll" resultType="com.movieAndgame.Dto.MovieReviewDto">
+		select * from movie_review order by write_date desc
+		
+		/* mybatis태그 내부 주석 */
+	</select>
+
 	<insert id="reviewSave" parameterType="com.movieAndgame.Dto.MovieReviewDto">
 		insert into movie_review(writer, title, content, write_date)
 		values

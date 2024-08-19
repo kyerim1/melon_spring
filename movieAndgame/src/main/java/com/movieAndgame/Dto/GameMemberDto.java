@@ -19,5 +19,5 @@ public class GameMemberDto {
 	private String password;
 	
 	@NotEmpty(message="닉네임 입력해주세요")
-	private String nickName;
+	private String nick_name;
 }

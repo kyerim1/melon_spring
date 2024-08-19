@@ -1,5 +1,7 @@
 package com.movieAndgame.control;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -33,11 +35,12 @@ public class MovieMenuControl {
 		return "redirect:/movieMenu/review";
 	}
 	
-	
+	// 리뷰 첫페이지( 리뷰목록 )
 	@GetMapping("/review")
 	public String reviewMain(Model model) {
 		
-		
+		List<MovieReviewDto> list= reviewService.reviewlist();
+		model.addAttribute("reviewList" ,list);
 		return "movie/review/index";
 	}
 	

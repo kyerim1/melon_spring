@@ -25,6 +25,7 @@ public class GamePostControl {
 	@GetMapping("/m")
 	public String index(Model model) {
 		
+		model.addAttribute("mList",gamePostService.list());
 		
 		return "game/post/index";
 	}
@@ -36,7 +37,7 @@ public class GamePostControl {
 		}
 		
 		GamePostDto dto = new GamePostDto();		
-		String name = ((GameMemberDto)session.getAttribute("user")).getNickName();
+		String name = ((GameMemberDto)session.getAttribute("user")).getNick_name();
 		dto.setWriter(name);
 		
 		model.addAttribute("gamePostDto",dto);

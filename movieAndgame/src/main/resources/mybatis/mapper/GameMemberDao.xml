@@ -13,6 +13,6 @@
 
 	<insert id="insert" parameterType="com.movieAndgame.Dto.GameMemberDto">
 		insert into game_member(email, nick_name, password) 
-			values( #{email}, #{nickName}, #{password} )
+			values( #{email}, #{nick_name}, #{password} )
 	</insert>
 </mapper>
