@@ -24,6 +24,13 @@ public class MovieReviewService {
 	public void save(MovieReviewDto movieReviewDto) {
 		movieReviewDao.reviewSave(movieReviewDto);
 	}
+
+
+
+	public MovieReviewDto findById(int id) {
+		
+		return movieReviewDao.findById(id);
+	}
 }
 
 

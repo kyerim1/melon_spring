@@ -12,4 +12,6 @@ public interface MovieReviewDaoImpl {
 	
 	// 전체 데이터 가져오기 - 목록 출력
 	public List<MovieReviewDto> findAll();
+// 글 상세 보기 - 데이터베이스에서 가져오기 review_id 로 조회
+	public MovieReviewDto findById(int id);
 }
