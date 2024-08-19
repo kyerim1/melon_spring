@@ -20,7 +20,9 @@ public class GamePostService {
 		return gamePostDaoImpl.findAll();
 	}
 	
-	
+	public GamePostDto detail(int id) {
+		return gamePostDaoImpl.findId(id);
+	}
 	public void write(@Valid GamePostDto gamePostDto) {
 		gamePostDaoImpl.save(gamePostDto);
 		

@@ -10,6 +10,7 @@ import com.movieAndgame.Dto.GamePostDto;
 @Mapper
 public interface GamePostDaoImpl {
 
+	public GamePostDto findId(int id);
 	public int save(GamePostDto gamePostDto);
 	public List<GamePostDto> findAll();
 }

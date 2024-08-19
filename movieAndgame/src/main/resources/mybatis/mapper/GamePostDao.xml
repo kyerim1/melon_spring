@@ -3,6 +3,9 @@
 
 <mapper namespace="com.movieAndgame.Dao.GamePostDaoImpl">
 	
+	<select id="findId" resultType="com.movieAndgame.Dto.GamePostDto">
+		select * from game_post where post_id=#{id}
+	</select>
 	<select id="findAll" resultType="com.movieAndgame.Dto.GamePostDto">
 		select * from game_post order by write_date desc
 	</select>

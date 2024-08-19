@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{game/basic}">
+	
+<head>
+	<th:block layout:fragment="css"></th:block>
+	<th:block layout:fragment="script"></th:block>
+</head>	
+
+	<div layout:fragment="main" id="main">
+		<table th:object="${gamePostDto}">
+			<tr>
+				<td>번호</td>
+				<td th:text="*{post_id}"></td>
+			</tr>
+			<tr>
+				<td>작성자</td>
+				<td th:text="*{writer}"></td>
+			</tr>
+			<tr>
+				<td>제목</td><td th:text="*{title}"></td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td th:text="*{game_name}"></td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td th:text="*{taget_post}"></td>
+			</tr>
+			<tr>
+				<td>작성일</td>
+				<td th:text="*{#temporals.format(write_date,'yy-MM-dd')}"></td>
+			</tr>
+
+<!--   2024/08/19     2024.08.19   2024-08-19      -->			
+
+		</table>	
+	</div>
+
+
+</html>
